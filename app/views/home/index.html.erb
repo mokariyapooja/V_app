@@ -1,0 +1,143 @@
+<span class="left_panel">
+  <div class="table">
+    <%= render partial: 'index', locals: {index_arr: ApiIndexRenderer.passenger_api_index } %>
+  </div>  
+</span>
+<span class='right_panel'> 
+  
+  <!-- Sign Up Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Sign Up', 
+        link_href: 'sign_up',
+        link_method: 'POST',
+        original_link:   api_sing_up_path,
+        parameters: [
+          {name: 'user[user_name]', description: 'User name'},
+          {name: 'user[first_name]', description: 'First name'},
+          {name: 'user[last_name]', description: 'Last name'},
+          {name: 'user[email]', description: 'Email Address of User', required: 1 },
+          {name: 'user[password]', description: 'Password', required: 1},
+          {name: 'user[password_confirmation]', description: 'Password', required: 1},
+          {name: 'user[mobile_number]', description: 'Contact number'},
+          {name: 'user[device_id]', description: 'Device id'},
+          {name: 'user[device_type]', description: 'Device type (iphone/android)'}
+        ],
+        options: {}} %>
+     
+  <!-- Login Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Login', 
+        link_href: 'sing_in',
+        link_method: 'POST',
+        original_link:  api_sing_in_path,
+        parameters: [
+          {name: 'mobile_number', description: 'Mobile number of User', required: 1 },
+          {name: 'password', description: 'Password', required: 1},
+          {name: 'device_id', description: 'Device id'},
+          {name: 'device_type', description: 'Device type (iphone/android)'},
+          {name: 'time_zone', description: 'Time zone'}
+        ],
+        options: {}} %>
+
+  <!-- Change password-->
+  <%= render partial: 'api', locals: {
+        link_name: 'Change Password', 
+        link_href: 'change_password',
+        link_method: 'POST',
+        original_link:   api_change_password_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'user[current_password]', description: 'Current Password', required: 1},
+          {name: 'user[password]', description: 'New Password', required: 1},
+          {name: 'user[password_confirmation]', description: 'Confirm new Password', required: 1},
+        ],
+        options: {}} %>
+ 
+  <!-- Forgot password -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Forgot Password', 
+        link_href: 'forgot_password',
+        link_method: 'POST',
+        original_link: api_forgot_password_path,
+        parameters: [
+          {name: 'email', description: 'Email Address of User', required: 1 }
+        ],
+        options: {}} %>
+
+  <!-- Logout Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Logout', 
+        link_href: 'sing_out',
+        link_method: 'GET',
+        original_link:  api_sing_out_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 }
+        ],
+        options: {}} %>
+
+  <!-- Create Groups -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Create Groups', 
+        link_href: 'create_group',
+        link_method: 'POST',
+        original_link:  api_create_group_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'group[group_name]', description: 'Group name', required: 1 }
+        ],
+        options: {}} %>
+
+  <!--Add frindes in Group -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Add frindes in Group', 
+        link_href: 'add_friends_in_group',
+        link_method: 'POST',
+        original_link:  api_add_friends_in_group_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'group_id', description: 'Group id', required: 1 },
+          {name: 'user_ids', description: 'a comma seprated string of ids of users which are to be added in group ', required: 1 }
+        ],
+        options: {}} %>
+
+  <!-- List all groups -->
+  <%= render partial: 'api', locals: {
+        link_name: 'List all groups', 
+        link_href: 'groups_list',
+        link_method: 'POST',
+        original_link:  api_groups_list_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+        ],
+        options: {}} %>
+ 
+  <!-- Update Profile Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Update Profile', 
+        link_href: 'update_profile',
+        link_method: 'POST',
+        original_link:   api_update_profile_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'user[user_name]', description: 'User name'},
+          {name: 'user[first_name]', description: 'First name'},
+          {name: 'user[last_name]', description: 'Last name'},
+          {name: 'user[email]', description: 'Email Address of User' },
+          {name: 'user[device_id]', description: 'Device id'},
+          {name: 'user[device_type]', description: 'Device type (iphone/android)'}
+        ],
+        options: {}} %>
+
+  <!-- Update latitude Longitude Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Update Profile', 
+        link_href: 'update_latitude_longitude',
+        link_method: 'POST',
+        original_link:   api_update_latitude_longitude_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'user[latitude]', description: 'User name', required: 1},
+          {name: 'user[longitude]', description: 'First name', required: 1},
+        ],
+        options: {}} %>
+</span>
