@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924093322) do
+ActiveRecord::Schema.define(version: 20140924095212) do
 
   create_table "authentication_tokens", force: true do |t|
     t.datetime "created_at"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140924093322) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "mobile_number",          limit: 8,              null: false
-    t.integer  "device_id"
+    t.string   "device_id"
     t.string   "device_type"
     t.float    "latitude"
     t.float    "longitude"
