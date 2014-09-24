@@ -10,7 +10,7 @@
         link_name: 'Sign Up', 
         link_href: 'sign_up',
         link_method: 'POST',
-        original_link:   api_sing_up_path,
+        original_link:   api_signup_path,
         parameters: [
           {name: 'user[user_name]', description: 'User name'},
           {name: 'user[first_name]', description: 'First name'},
@@ -29,7 +29,7 @@
         link_name: 'Login', 
         link_href: 'sing_in',
         link_method: 'POST',
-        original_link:  api_sing_in_path,
+        original_link:  api_login_path,
         parameters: [
           {name: 'mobile_number', description: 'Mobile number of User', required: 1 },
           {name: 'password', description: 'Password', required: 1},
@@ -69,7 +69,7 @@
         link_name: 'Logout', 
         link_href: 'sing_out',
         link_method: 'GET',
-        original_link:  api_sing_out_path,
+        original_link:  api_logout_path,
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 }
         ],
@@ -92,7 +92,7 @@
         link_name: 'Add frindes in Group', 
         link_href: 'add_friends_in_group',
         link_method: 'POST',
-        original_link:  api_add_friends_in_group_path,
+        original_link:  api_add_friend_group_path,
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
           {name: 'group_id', description: 'Group id', required: 1 },
@@ -105,7 +105,7 @@
         link_name: 'List all groups', 
         link_href: 'groups_list',
         link_method: 'POST',
-        original_link:  api_groups_list_path,
+        original_link:  api_list_groups_path,
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
         ],
@@ -133,7 +133,7 @@
         link_name: 'Update Profile', 
         link_href: 'update_latitude_longitude',
         link_method: 'POST',
-        original_link:   api_update_latitude_longitude_path,
+        original_link:   api_update_lat_long_path,
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
           {name: 'user[latitude]', description: 'User name', required: 1},
