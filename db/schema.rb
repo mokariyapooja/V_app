@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924070224) do
+ActiveRecord::Schema.define(version: 20140924093322) do
 
   create_table "authentication_tokens", force: true do |t|
     t.datetime "created_at"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20140924070224) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                            default: "", null: false
+    t.string   "encrypted_password",               default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                    default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140924070224) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "mobile_number"
+    t.integer  "mobile_number",          limit: 8,              null: false
     t.integer  "device_id"
     t.string   "device_type"
     t.float    "latitude"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140924070224) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["mobile_number"], name: "index_users_on_mobile_number", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
