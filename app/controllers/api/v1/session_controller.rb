@@ -85,7 +85,7 @@ before_action :define_current_user, only: [:sing_out, :change_password]
 
   private
   def users_params
-    params.require(:user).permit(:email,:password,:password_confirmation,:first_name,:last_name,:mobile_number,:devise_id,:devise_type)
+    params.require(:user).permit(:email,:password,:password_confirmation,:first_name,:last_name,:mobile_number,:device_id,:device_type)
   end
 
   def change_password_params
