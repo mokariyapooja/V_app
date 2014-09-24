@@ -46,3 +46,5 @@ gem 'pushmeup'
 #gem 'gcm'
 #for location traking
 gem 'geocoder'
+#for send mail
+gem 'mandrill-rails'
