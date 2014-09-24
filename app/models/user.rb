@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   ##call_backs
   after_create :create_notification
-  after_update :send_notification_user, :if => :latitude_changed? && :longitude_changed?
+  after_update :send_notification_user
 
   ##associations
   has_many :authentication_tokens, :dependent => :destroy
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     Rails.logger.debug "=========== other User#{ other_users.inspect }============"           
     @other_users_notification = Notification.where("sender_id in (?) and resever_id in (?)",other_users,other_users)
     Rails.logger.debug "=========== other notification User#{  @other_users_notification.inspect }============"
-    @other_users_notification.update_all(in_range: false) if other_users_notification.present?
+    @other_users_notification.update_all(in_range: false) 
     self.send_notification("#{list.join(" ,")} in your area") 
     Rails.logger.debug "===========#{ list.join(" ,").inspect }============"
   end
@@ -77,26 +77,26 @@ class User < ActiveRecord::Base
   end
  
   def has_android_devise?
-    devise_type.downcase == "android"
+    device_type.downcase == "android"
   end
 
   def has_iphone_devise?
-    devise_type.downcase == "iphone"
+    device_type.downcase == "iphone"
   end
  
  ##send notification
  def send_notification(msg)
-    if self.devise_id?
+    if self.device_id?
       if self.has_android_devise?
         GCM.key = "AIzaSyAETxyIUZrrtjpmJ57b1jkUW7C_bo97mJU"
-        GCM.send_notification(self.devise_id, {:message => msg}, :time_to_live => 3600)
+        GCM.send_notification(self.device_id, {:message => msg}, :time_to_live => 3600)
         puts "android"
       elsif self.has_iphone_devise?  
         APNS.port ='2195'
         APNS.pem  = "#{Rails.root}/config/vicinityCert.pem"
         APNS.host = 'gateway.sandbox.push.apple.com'
         APNS.pass = '1234'
-        APNS.send_notification(self.devise_id, :alert => msg, :badge => 1, :sound => 'default')
+        APNS.send_notification(self.device_id, :alert => msg, :badge => 1, :sound => 'default')
         puts "iphone"
       end
     end

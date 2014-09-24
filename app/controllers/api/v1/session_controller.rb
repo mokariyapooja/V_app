@@ -24,14 +24,14 @@ before_action :define_current_user, only: [:sing_out, :change_password]
     @valid_mobile_number = params[:mobile_number].present?
     @valid_password = params[:password].present?
     @user = User.authenticate_user_with_auth_token(params[:mobile_number],params[:password])
-    logger.warn("===========#{@token.inspect}============")
-    logger.warn("===========#{@user.inspect}============")
+    logger.warn("===========nil token#{@token.inspect}============")
+    logger.warn("===========nil user#{@user.inspect}============")
     Rails.logger.debug "===========#{@user.inspect}============"
     if @user.present?
       @token = @user.authentication_tokens.build
       @token.save
-      logger.warn("===========#{@user.inspect}============")
-      Rails.logger.debug "===========#{@token.inspect}============"
+      logger.warn("===========nil @user.present#{@user.inspect}============")
+      Rails.logger.debug "=========== nil @token.present#{@token.inspect}============"
       render :file => 'api/v1/session/register'   
     elsif !@valid_password && !@valid_mobile_number
       render_json({:errors => "Email and password is required",:status => 404}.to_json)  
