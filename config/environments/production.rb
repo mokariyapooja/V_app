@@ -85,7 +85,7 @@ Rails.application.configure do
     :address => "smtp.mandrillapp.com",
     :port =>           587,
     :authentication => :plain,
-    :domain =>         'heroku.com',
+    #:domain =>         'heroku.com',
     :user_name =>      "pooja.apsolute@gmail.com",
     :password =>       Rails.application.secrets.mandrill_api_key
   }
