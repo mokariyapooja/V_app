@@ -1,6 +1,6 @@
 json.groups @maneged_groups do |mg|
   json.group_id mg.id
-  json.name mg.group_name
+  json.name mg.name
 
   json.admin do
     json.id mg.admin.id

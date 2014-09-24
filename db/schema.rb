@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922122822) do
+ActiveRecord::Schema.define(version: 20140924070224) do
 
   create_table "authentication_tokens", force: true do |t|
     t.datetime "created_at"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140922122822) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "group_name"
+    t.string   "name"
   end
 
   create_table "groups_users", force: true do |t|
@@ -53,12 +53,11 @@ ActiveRecord::Schema.define(version: 20140922122822) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_name"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "mobile_number"
-    t.integer  "devise_id"
-    t.string   "devise_type"
+    t.integer  "device_id"
+    t.string   "device_type"
     t.float    "latitude"
     t.float    "longitude"
   end

@@ -12,7 +12,6 @@
         link_method: 'POST',
         original_link:   api_signup_path,
         parameters: [
-          {name: 'user[user_name]', description: 'User name'},
           {name: 'user[first_name]', description: 'First name'},
           {name: 'user[last_name]', description: 'Last name'},
           {name: 'user[email]', description: 'Email Address of User', required: 1 },
@@ -34,8 +33,7 @@
           {name: 'mobile_number', description: 'Mobile number of User', required: 1 },
           {name: 'password', description: 'Password', required: 1},
           {name: 'device_id', description: 'Device id'},
-          {name: 'device_type', description: 'Device type (iphone/android)'},
-          {name: 'time_zone', description: 'Time zone'}
+          {name: 'device_type', description: 'Device type (iphone/android)'}
         ],
         options: {}} %>
 
@@ -60,7 +58,7 @@
         link_method: 'POST',
         original_link: api_forgot_password_path,
         parameters: [
-          {name: 'email', description: 'Email Address of User', required: 1 }
+          {name: 'mobile_number', description: 'mobile_number of User', required: 1 }
         ],
         options: {}} %>
 
@@ -73,9 +71,36 @@
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 }
         ],
+        options: {}} %> 
+ 
+  <!-- Update Profile Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Update Profile', 
+        link_href: 'update_profile',
+        link_method: 'POST',
+        original_link:   api_update_profile_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'user[first_name]', description: 'First name'},
+          {name: 'user[last_name]', description: 'Last name'},
+          {name: 'user[email]', description: 'Email Address of User' }
+        ],
         options: {}} %>
 
-  <!-- Create Groups -->
+  <!-- Update latitude Longitude Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Update latitude and longitude', 
+        link_href: 'update_latitude_longitude',
+        link_method: 'POST',
+        original_link:   api_update_lat_long_path,
+        parameters: [
+          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
+          {name: 'user[latitude]', description: 'latitude', required: 1},
+          {name: 'user[longitude]', description: 'longitude', required: 1},
+        ],
+        options: {}} %>
+
+   <!-- Create Groups -->
   <%= render partial: 'api', locals: {
         link_name: 'Create Groups', 
         link_href: 'create_group',
@@ -83,7 +108,7 @@
         original_link:  api_create_group_path,
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
-          {name: 'group[group_name]', description: 'Group name', required: 1 }
+          {name: 'group[name]', description: 'Group name', required: 1 }
         ],
         options: {}} %>
 
@@ -108,36 +133,6 @@
         original_link:  api_list_groups_path,
         parameters: [
           {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
-        ],
-        options: {}} %>
- 
-  <!-- Update Profile Api -->
-  <%= render partial: 'api', locals: {
-        link_name: 'Update Profile', 
-        link_href: 'update_profile',
-        link_method: 'POST',
-        original_link:   api_update_profile_path,
-        parameters: [
-          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
-          {name: 'user[user_name]', description: 'User name'},
-          {name: 'user[first_name]', description: 'First name'},
-          {name: 'user[last_name]', description: 'Last name'},
-          {name: 'user[email]', description: 'Email Address of User' },
-          {name: 'user[device_id]', description: 'Device id'},
-          {name: 'user[device_type]', description: 'Device type (iphone/android)'}
-        ],
-        options: {}} %>
-
-  <!-- Update latitude Longitude Api -->
-  <%= render partial: 'api', locals: {
-        link_name: 'Update Profile', 
-        link_href: 'update_latitude_longitude',
-        link_method: 'POST',
-        original_link:   api_update_lat_long_path,
-        parameters: [
-          {name: 'auth_token', description: 'Authentication Token which you will get from login or register api', required: 1 },
-          {name: 'user[latitude]', description: 'User name', required: 1},
-          {name: 'user[longitude]', description: 'First name', required: 1},
         ],
         options: {}} %>
 </span>

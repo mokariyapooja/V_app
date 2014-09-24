@@ -46,6 +46,6 @@ before_action :define_current_user
 
   private
   def groups_params
-    params.require(:group).permit(:group_name)
+    params.require(:group).permit(:name)
   end
 end
